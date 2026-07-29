@@ -15,8 +15,8 @@ export default function Login() {
   const handleSubmit = async () => {
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, form);
-      dispatch(setCredentials({ token: data.token, user: data.user }));
-      localStorage.setItem("token", data.token);
+      dispatch(setCredentials({ token: data.accessToken, user: data.user }));
+      localStorage.setItem("token", data.accessToken);
       navigate("/analyze");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
